@@ -1,12 +1,8 @@
 [package]
-name = "clf-lang"
+name = "clf-ast"
 version = "0.1.0"
-authors = ["Chang Zewei"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[workspace]
-members = ["./cpl","./cpl/sea","./cpl/ast","./rt","./il"]
 
 [dependencies]
-
