@@ -1,0 +1,17 @@
+prelude {
+    pub use crate :: vec :: Vec 
+    pub use crate :: convert :: { Into , From } 
+    pub use crate :: result :: Result :: *
+    pub use crate :: option :: Option :: *
+}
+
+mod {
+    " io.flib " as io,
+    " vec.flib " as vec,
+    " convert.flib " as flib ,
+    " result.flib " as result ,
+    " magic.flib " as magic,
+    " cmp.flib " as cmp ,
+    " random.flib " as random,
+    " option.flib" as option,
+}

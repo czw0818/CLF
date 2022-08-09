@@ -1,0 +1,19 @@
+pub trait Into< T > {
+    fn into ( self ) -> T;
+}
+
+pub trait From< T > {
+    fn from ( _ : T ) -> Self;
+}
+// 标准库不受孤儿原则限制
+impl<U,T:From<U>> Into<T> for U{
+    fn into(self) -> T{
+        T::from(self)
+    }
+}
+
+impl<U,T:Into<U>> From<T> for U{
+    fn from(self) -> U{
+        T::into(self)
+    }
+}

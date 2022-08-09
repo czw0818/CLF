@@ -1,0 +1,28 @@
+#![feature(magic_syntax)] // 编译时实现,未开放语法
+
+magic! Compiler;// 编译时实现
+/// methods:
+/// parse<T>() where T:Compiler_struct 编译器会解析一个T并返回
+/// exec(T) 编译器在此时执行T并返回结果
+magic! CallBeforeMain;// 编译时实现
+magic! Lazy;
+impl Lazy<T>!{
+    let func : fn() -> T = Compiler!.parse::<Expression>( ).into( )
+}
+
+struct Lazy<T>(fn() -> T,Option<T>);
+
+impl<T> Lazy<T>{
+    @magic.constuct
+    fn new ( func:fn() -> T) -> Self{
+        Self( func , None)
+    }
+    @magic.call
+    fn call() -> T{
+        return self.1 = self.0()
+    }
+    @magic.getter
+    fn getter() -> T{
+        return self.1.take().unwrap()
+    }
+}

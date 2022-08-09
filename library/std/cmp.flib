@@ -1,0 +1,14 @@
+pub enum Order {
+    Greater,
+    Less,
+    Eq,
+}
+
+trait PartiEq{
+    fn cmp(&self,&other:Self);
+}
+/*
+// impl at compile
+impl PartiEq for u8 | u16 | u32 | usize | u64;
+impl PartiEq for i8 | i16 | i32 | isize | i64;
+*/

@@ -1,0 +1,8 @@
+pub enum Result<T,V>{
+    Ok(T),
+    Err(V)
+}
+
+impl<T,V> Result<T,V>{
+    /// ......
+}

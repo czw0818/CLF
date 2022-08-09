@@ -1,0 +1,12 @@
+use std.magic.{Compiler,CallBeforeMain}
+
+magic! MagicFunction;
+impl MagicFunction!{
+    let func:fn() = Compiler!.parse::<Expression>().into()
+    CallBeforeMain! func;
+}
+
+main{
+    println("main function")
+    MagicFunction! println("running expression")
+}

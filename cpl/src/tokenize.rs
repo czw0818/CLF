@@ -60,6 +60,12 @@ pub enum Token<'a>{
     #[token("print")]
     Print,
 
+    #[token("prelude")]
+    Prelude,
+
+    #[token("mod")]
+    Module,
+
     #[token("(")]
     LParent,
 
@@ -186,8 +192,7 @@ mod test{
     use super::*;
     #[test]
     fn tokenize_net_server(){
-        const SOURCE:&'static str = include_str!("../../example/net_server.clf");
-        let ts = Token::lexer(SOURCE);
+        let ts = Token::lexer(include_str!("../../example/net_server.clf"));
         for t in ts{
             println!("{:?}",t);
             assert_ne!(t,Token::Error)
