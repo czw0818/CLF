@@ -1,15 +1,15 @@
-pub enum Option<T>{
-    Some(T),
+pub enum Option< T >{
+    Some( T ),
     None
 }
 
-impl<T> Option<T>{
-    pub fn unwrap(self) -> T{
-        match self{
-            Some(t) => t,
+impl< T > Option < T > {
+    pub fn unwrap( self ) -> T{
+        match self {
+            Some( t ) => t,
             None => panic!
         }
     }
-    pub fn take(self) -> Option<T>;
+    pub fn take( self ) -> Option<T>;
     // 如果T实现了Copy,take不会改变原来的值
 }

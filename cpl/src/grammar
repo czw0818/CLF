@@ -1,0 +1,20 @@
+this is not a `r file`
+
+ident <- _ | [a-zA-Z][a-zA-Z0-9_]
+
+types <- ident | ident<ident> | !
+
+expression <- ident | (expression) | expression + expression | expression - expression | expression * expression 
+    | expression / expression | expression ^ expression | -expression | *expression | $ expression 
+    | expression && expression | expression || expression | expression & expression | expression \| expression
+    | expression<<expression | expression >> expression | (((ident)?(::ident)* ::) | ((ident)?(.ident)* .) ) ident((expression)*) 
+    | if_expression | while_expression| expression > expression | expression >= expression | expression < expression 
+    | expression <= expression | for_expression | let_expression | break (expression)? | continue 
+    | return (expression)? | expression\?
+    # 不提供海龟运算符,请使用magic::Lazy替代
+
+if_expression <- if (expression) {(expression)*} (else if expression{(expression)*})? (else {(expression)*})?
+
+while_expression <- while(expression){(expression)*}
+
+let_expression <- (let | var) ident ( : ident)? = expression

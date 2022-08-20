@@ -1,0 +1,18 @@
+use std.net.*;
+use std.fs.*;
+
+main{
+    let ftp_handle = FTP:: new( ).bind(
+        ip: [ 192 , 168 , 0 , 1 ],
+        ports: [ 20 , 21 ] ,
+    )?;
+    for (filestream,ctrlstream) in FTP::new_handle().incoming()?{
+        if ctrlstream.get() == FTP::Statuation::Get{
+            filestream.send_with_filehandle(
+                File::open(
+                    "/resource/targetfile.zip"
+                )?
+            )?;
+        }
+    }
+}

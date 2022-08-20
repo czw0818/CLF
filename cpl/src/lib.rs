@@ -1,2 +1,4 @@
 pub mod tokenize;
-mod syntax_analyzer;
+pub mod syntax_analyzer;
+
+pub use syntax_analyzer::*;

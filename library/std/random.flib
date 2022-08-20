@@ -1,0 +1,3 @@
+
+/// return a int in a..=b
+pub fn randint( a:int , b:int ) -> int;

@@ -4,7 +4,7 @@ pub enum Order {
     Eq,
 }
 
-trait PartiEq{
+pub trait PartiEq{
     fn cmp(&self,&other:Self);
 }
 /*

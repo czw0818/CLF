@@ -1,28 +1,21 @@
-#![feature(magic_syntax)] // 编译时实现,未开放语法
+use builtinlib.magic.*;
 
-magic! Compiler;// 编译时实现
-/// methods:
+//magic! Compiler;
+/// methods (compile time):
 /// parse<T>() where T:Compiler_struct 编译器会解析一个T并返回
-/// exec(T) 编译器在此时执行T并返回结果
-magic! CallBeforeMain;// 编译时实现
-magic! Lazy;
-impl Lazy<T>!{
-    let func : fn() -> T = Compiler!.parse::<Expression>( ).into( )
-}
+/// exec(T) 编译器在此时执行T并返回结果(并不会真的执行,只是命令编译器在程序运行到这时执行)
 
-struct Lazy<T>(fn() -> T,Option<T>);
+//magic! CallBeforeMain;
+/// 接收一个函数,在main函数前执行,如果有多给CallBeforeMain,则先来后到
 
-impl<T> Lazy<T>{
-    @magic.constuct
-    fn new ( func:fn() -> T) -> Self{
-        Self( func , None)
-    }
-    @magic.call
-    fn call() -> T{
-        return self.1 = self.0()
-    }
-    @magic.getter
-    fn getter() -> T{
-        return self.1.take().unwrap()
-    }
-}
+//magic! Lazy;
+/// methods (runtime):
+/// @magic.call即做函数调用,将(再次)对表达式求值并保存然后返回
+/// @magic.get即获取已保存的表达式值,不做检查立即返回 
+/// Safety:注意！！！如果没有被call过，将返回一个uninit的值
+
+//magic! transmute!;
+/// 欺骗类型系统,调用方法:
+/// ```
+/// let a:str = transmute!! 13;
+/// ```

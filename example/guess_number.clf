@@ -1,22 +1,22 @@
-use std.random.randint
-use std.magic.Lazy
-use std.cmp.*
-use std.io.*
+use std.random.randint;
+use std.magics.Lazy;
+use std.cmp.*;
+use std.io.*;
 
 main{
-    let get: Lazy<usize> = Lazy! input( "输入所猜:" ).parse::<usize>( )
-    let think: usize = randint( from: 0, to: 100 )
+    let get: Lazy<usize> = Lazy! input( "输入所猜:" ).parse::<usize>( );
+    let think: usize = randint( from: 0, to: 100 );
     while get() != think{
         match cmp( think , get ) {
             Order :: Greater => {
-                println( "大了" )
+                println( "大了" );
             },
             Order :: Less => {
-                println( "小了" )
+                println( "小了" );
             },
             Order :: Eq => {
-                println( "正确" )
-                break
+                println( "正确" );
+                break;
             },
         }
     }

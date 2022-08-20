@@ -1,16 +1,16 @@
-use std.http.server
-use std.http
-use std.io.prelude.*
+use std.http.server;
+use std.http;
+use std.io.prelude.*;
 
 @server.rout("/")
 fn respon( _ , stream:http.connect) -> Result<()>{
-    stream.write("hello world")?
-    stream.disconnect()?
-    Ok(())
+    stream.write("hello world")?;
+    stream.disconnect()?;
+    return Ok(());
 }
 
 main{
-    server .set(Setting::default( ) .protocol( "https" ) )
-    server.bind("127.0.0.1:443")
-    server.listen()
+    server.init_with_set(Setting::default( ) .protocol( "https" ));
+    server.bind("127.0.0.1:443");
+    server.listen();
 }

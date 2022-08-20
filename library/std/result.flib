@@ -1,8 +1,16 @@
-pub enum Result<T,V>{
+pub enum Result<T,V = Box<dyn std::error::Error>>
+    where V:std::error::Error
+{
     Ok(T),
     Err(V)
 }
 
 impl<T,V> Result<T,V>{
-    /// ......
+    pub fn unwrap(self) -> T{
+        match self{
+            Ok(v) => return v,
+            Err(e) => panic!(e)
+        }
+    }
+    // ......
 }

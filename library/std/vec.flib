@@ -1,0 +1,21 @@
+#[feature(raw_point)]
+use std::alloc::*;
+use std::ptr::*;
+use std::mem::*;
+
+pub struct Vec < T , A = GlobalAlloc> {
+    ptr: NonNull< T > ,
+    len: usize ,
+    cap: usize ,
+}
+
+impl<T,A:Allocor> Vec<T,A>{
+    fn new() -> Self{
+        Self{
+            ptr: malloc( sizeof(T) * 4),
+            len: 0,
+            cap: 0,
+        }
+    }
+    // ......
+}
